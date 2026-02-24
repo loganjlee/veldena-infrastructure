@@ -15,12 +15,12 @@ The whole thing runs on a single t3.medium (2 vCPU, 4GB RAM, 20GB disk), which f
 │                        AWS EC2 (t3.medium)                      │
 │                     Ubuntu 22.04 LTS | us-east-1                │
 │                                                                 │
-│  ┌──────────┐  ┌──────────────┐  ┌──────────────────────────┐  │
-│  │  Nginx   │  │   n8n        │  │   PostgreSQL 13          │  │
-│  │  Reverse  │──│  Workflow    │──│   Execution data         │  │
-│  │  Proxy   │  │  Engine      │  │   Client-isolated backups│  │
-│  │  (TLS)   │  │  (Docker)    │  │   (Docker)               │  │
-│  └──────────┘  └──────────────┘  └──────────────────────────┘  │
+│  ┌──────────┐  ┌──────────────┐  ┌──────────────────────────┐   │
+│  │  Nginx   │  │   n8n        │  │   PostgreSQL 13          │   │
+│  │  Reverse │──│  Workflow    │──│   Execution data         │   │
+│  │  Proxy   │  │  Engine      │  │   Client-isolated backups│   │
+│  │  (TLS)   │  │  (Docker)    │  │   (Docker)               │   │
+│  └──────────┘  └──────────────┘  └──────────────────────────┘   │
 │                                                                 │
 │  ┌────────────────── Security Operations Layer ──────────────┐  │
 │  │                                                           │  │
@@ -33,10 +33,10 @@ The whole thing runs on a single t3.medium (2 vCPU, 4GB RAM, 20GB disk), which f
 │  │                                                           │  │
 │  └───────────────────────────────────────────────────────────┘  │
 │                                                                 │
-│  ┌─── Alerting ───┐      ┌─── Backup Destination ───┐         │
-│  │ msmtp -> Gmail │      │ rclone -> Google Drive    │         │
-│  │ SMTP (TLS)     │      │ Per-client isolation      │         │
-│  └────────────────┘      └───────────────────────────┘         │
+│  ┌─── Alerting ───┐      ┌─── Backup Destination   ───┐         │
+│  │ msmtp -> Gmail │      │ rclone -> Google Drive     │         │
+│  │ SMTP (TLS)     │      │ Per-client isolation       │         │
+│  └────────────────┘      └────────────────────────────┘         │
 └─────────────────────────────────────────────────────────────────┘
 
      Perimeter: AWS Security Groups (IP-restricted SSH, 443 open for webhooks)
